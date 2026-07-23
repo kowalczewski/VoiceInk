@@ -1,0 +1,43 @@
+name: Build VoiceInk for personal use
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build unsigned VoiceInk
+    runs-on: macos-26
+    timeout-minutes: 60
+
+    steps:
+      - name: Check out VoiceInk
+        uses: actions/checkout@v6
+
+      - name: Show build environment
+        run: |
+          uname -m
+          sw_vers
+          xcodebuild -version
+          cmake --version
+
+      - name: Build VoiceInk
+        run: make local
+
+      - name: Package application
+        run: |
+          ditto -c -k \
+            --sequesterRsrc \
+            --keepParent \
+            "$HOME/Downloads/VoiceInk.app" \
+            VoiceInk.zip
+
+      - name: Upload application
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoiceInk-macOS
+          path: VoiceInk.zip
+          retention-days: 7
+          if-no-files-found: error
