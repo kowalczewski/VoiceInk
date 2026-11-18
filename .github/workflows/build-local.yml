@@ -2,19 +2,27 @@ name: Build VoiceInk for personal use
 
 on:
   workflow_dispatch:
+    inputs:
+      ref:
+        description: "Upstream version to build (tag like v2.20, or main)"
+        required: true
+        default: "main"
 
 permissions:
   contents: read
 
 jobs:
   build:
-    name: Build unsigned VoiceInk
+    name: Build unsigned VoiceInk (${{ inputs.ref }})
     runs-on: macos-26
     timeout-minutes: 60
 
     steps:
       - name: Check out VoiceInk
         uses: actions/checkout@v6
+        with:
+          repository: Beingpax/VoiceInk
+          ref: ${{ inputs.ref }}
 
       - name: Show build environment
         run: |
@@ -37,7 +45,7 @@ jobs:
       - name: Upload application
         uses: actions/upload-artifact@v7
         with:
-          name: VoiceInk-macOS
+          name: VoiceInk-macOS-${{ inputs.ref }}
           path: VoiceInk.zip
           retention-days: 7
           if-no-files-found: error
