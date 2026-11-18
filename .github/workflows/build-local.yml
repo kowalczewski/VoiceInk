@@ -4,16 +4,20 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: "Upstream version to build (tag like v2.20, or main)"
+        description: "Version to build (tag like v2.20, or a branch like main / sonoma)"
         required: true
         default: "main"
+      repository:
+        description: "Source repository (Beingpax/VoiceInk = original, kowalczewski/VoiceInk = this fork)"
+        required: true
+        default: "Beingpax/VoiceInk"
 
 permissions:
   contents: read
 
 jobs:
   build:
-    name: Build unsigned VoiceInk (${{ inputs.ref }})
+    name: Build unsigned VoiceInk (${{ inputs.repository }}@${{ inputs.ref }})
     runs-on: macos-26
     timeout-minutes: 60
 
@@ -21,7 +25,7 @@ jobs:
       - name: Check out VoiceInk
         uses: actions/checkout@v6
         with:
-          repository: Beingpax/VoiceInk
+          repository: ${{ inputs.repository }}
           ref: ${{ inputs.ref }}
 
       - name: Show build environment
