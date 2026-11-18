@@ -3,22 +3,19 @@
     <channel>
         <title>VoiceInk</title>
         <item>
-            <title>2.1</title>
-            <description><![CDATA[
-                <h3>What's New in VoiceInk 2.1</h3>
-                <ul>
-                    <li>🗣️ Fixed Apple Speech-related issues</li>
-                    <li>⚙️ Improved mode setup, availability, and model selection</li>
-                    <li>🌐 Added Dia browser support for URL-based mode triggers</li>
-                    <li>🤖 Added support for the latest Gemini enhancement models</li>
-                    <li>🛠️ Added minor improvements and bug fixes</li>
-                </ul>
-            ]]></description>
-            <pubDate>Mon, 27 Jul 2026 10:39:52 +0545</pubDate>
-            <sparkle:version>210</sparkle:version>
-            <sparkle:shortVersionString>2.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.4</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/Beingpax/VoiceInk/releases/download/v2.1/VoiceInk.dmg" length="31663756" type="application/octet-stream" sparkle:edSignature="o4ffXcTieTzCGDyLtV2DXQyPrQaygAq3hmlHSw+rf+ylT+QNM/zBKakqwXlJj3vSs3fEb+qhDwg0XM6VKieGAA=="/>
+            <title>2.27</title>
+            <pubDate>Wed, 11 Nov 2026 10:11:05 +0545</pubDate>
+            <sparkle:version>227</sparkle:version>
+            <sparkle:shortVersionString>2.27</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h3>What's New in VoiceInk 2.27</h3>
+<ul>
+  <li>Added ElevenLabs Scribe V3 support.</li>
+  <li>Keep the display awake during active dictation (by <a href="https://github.com/ofa1">@ofa1</a>).</li>
+  <li>Performance fixes and improvements by <a href="https://github.com/wotschofsky">@wotschofsky</a>.</li>
+</ul>
+]]></description>
+            <enclosure url="https://github.com/Beingpax/VoiceInk/releases/download/v2.27/VoiceInk.dmg" length="39307531" type="application/octet-stream" sparkle:edSignature="nYg43djgKgFyL7D2NU7OhjlY4Z050v6rRlDtYzqMNzCgx7XfLapDTXQvpFXDEZI1lLWYoWBqGGomps5C3nJJBg=="/>
         </item>
     </channel>
 </rss>
