@@ -102,8 +102,20 @@ struct MiniRecorderView<S: RecorderStateProvider & ObservableObject>: View {
         )
         .animation(.easeInOut(duration: 0.3), value: hasLiveTranscript)
         .animation(.easeInOut(duration: 0.3), value: hasAssistantResponse)
-        .gesture(WindowDragGesture())
-        .allowsWindowActivationEvents()
+        .modifier(MiniRecorderWindowDrag())
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+    }
+}
+
+/// macOS 15+ drags the panel with SwiftUI; on macOS 14 the panel falls back to AppKit background dragging.
+private struct MiniRecorderWindowDrag: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(macOS 15, *) {
+            content
+                .gesture(WindowDragGesture())
+                .allowsWindowActivationEvents()
+        } else {
+            content
+        }
     }
 }

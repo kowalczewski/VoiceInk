@@ -23,7 +23,12 @@ final class MiniRecorderPanel: NSPanel {
         hidesOnDeactivate = false
         collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         isMovable = true
-        isMovableByWindowBackground = false
+        // WindowDragGesture in MiniRecorderView needs macOS 15; older systems drag by background.
+        if #available(macOS 15, *) {
+            isMovableByWindowBackground = false
+        } else {
+            isMovableByWindowBackground = true
+        }
         backgroundColor = .clear
         isOpaque = false
         hasShadow = false
